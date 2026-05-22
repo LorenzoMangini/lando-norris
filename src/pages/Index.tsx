@@ -1,0 +1,25 @@
+import Header from '@/components/layout/Header'
+import Footer from '@/components/layout/Footer'
+import Hero from '@/components/sections/Hero'
+import TrackCards from '@/components/sections/TrackCards'
+import HelmetGallery from '@/components/sections/HelmetGallery'
+import WorldChampion from '@/components/sections/WorldChampion'
+import SocialStrip from '@/components/sections/SocialStrip'
+import Partnerships from '@/components/sections/Partnerships'
+
+export default function Index() {
+  return (
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+      <Header />
+      <main>
+        <Hero />
+        <TrackCards />
+        <HelmetGallery />
+        <WorldChampion />
+        <SocialStrip />
+        <Partnerships />
+      </main>
+      <Footer />
+    </div>
+  )
+}
