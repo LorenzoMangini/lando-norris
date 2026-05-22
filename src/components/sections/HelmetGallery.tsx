@@ -51,7 +51,7 @@ function HelmetCard({ helmet, index }: { helmet: typeof helmets[0]; index: numbe
       className="group relative flex-shrink-0 w-52 md:w-64 cursor-grab active:cursor-grabbing"
     >
       {/* Image box */}
-      <div className="relative overflow-hidden bg-muted aspect-square">
+      <div className="relative overflow-hidden bg-card aspect-square">
         {/* Grey fade mask */}
         <img
           src="https://cdn.prod.website-files.com/67b5a02dc5d338960b17a7e9/67e41c00f127bc68e2462635_ln4-2-helm-mask-extender-grey-fade.png"
@@ -116,7 +116,7 @@ export default function HelmetGallery() {
   const constraintsRef = useRef(null)
 
   return (
-    <section id="helmets" className="bg-background py-20 overflow-hidden">
+    <section id="helmets" className="bg-muted py-20 overflow-hidden">
       {/* Header */}
       <div ref={ref} className="px-6 md:px-12 mb-12">
         <div className="overflow-hidden mb-2">
@@ -171,6 +171,25 @@ export default function HelmetGallery() {
           {helmets.map((helmet, i) => (
             <HelmetCard key={`${helmet.name}-${helmet.year}`} helmet={helmet} index={i} />
           ))}
+
+          {/* "See more" card at end of strip */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5, duration: 0.6 }}
+            className="flex-shrink-0 w-52 md:w-64 flex flex-col justify-end pb-10"
+          >
+            <a
+              href="https://landonorris.com/on-track"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-2 border border-border px-5 py-4 text-foreground font-heading font-700 text-xs tracking-widest uppercase hover:border-primary hover:text-primary transition-all duration-300"
+            >
+              <span className="group-hover:mr-1 transition-all duration-300">See all helmets</span>
+              <ArrowUpRight size={12} className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+            </a>
+          </motion.div>
         </motion.div>
       </div>
     </section>

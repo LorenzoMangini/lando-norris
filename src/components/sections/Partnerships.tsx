@@ -4,6 +4,7 @@ import { ArrowUpRight } from 'lucide-react'
 
 const headlineWords = ['Always', 'bringing', 'the fight.']
 
+
 export default function Partnerships() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
@@ -44,7 +45,7 @@ export default function Partnerships() {
             </motion.p>
           </div>
 
-          <h2 className="font-heading font-800 text-5xl md:text-6xl tracking-tight text-foreground leading-none uppercase mb-6">
+          <h2 className="font-heading font-900 text-6xl md:text-8xl lg:text-9xl tracking-tight text-foreground leading-none uppercase mb-6">
             {headlineWords.map((word, i) => (
               <div key={word} className="overflow-hidden block">
                 <motion.span

@@ -53,7 +53,7 @@ function TrackCard({ card, index }: { card: typeof cards[0]; index: number }) {
       initial={{ opacity: 0, y: 60, clipPath: 'inset(6% 0 0 0)' }}
       animate={inView ? { opacity: 1, y: 0, clipPath: 'inset(0% 0 0 0)' } : {}}
       transition={{ delay: index * 0.18, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-      className="group relative overflow-hidden bg-card aspect-[4/5] md:aspect-[3/4] flex flex-col justify-end cursor-pointer"
+      className="group relative overflow-hidden bg-card aspect-[3/4] md:aspect-auto md:h-[85vh] flex flex-col justify-end cursor-pointer"
     >
       {/* Background image — mouse parallax */}
       <motion.div
@@ -67,8 +67,8 @@ function TrackCard({ card, index }: { card: typeof cards[0]; index: number }) {
         />
       </motion.div>
 
-      {/* Gradient overlay — lifts on hover */}
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent transition-opacity duration-500 group-hover:opacity-80" />
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-background/10 transition-opacity duration-500" />
 
       {/* Lime vignette on hover */}
       <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
@@ -123,8 +123,8 @@ function TrackCard({ card, index }: { card: typeof cards[0]; index: number }) {
 
 export default function TrackCards() {
   return (
-    <section className="bg-background py-4 px-4 md:px-6" id="on-track">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-screen-2xl mx-auto">
+    <section className="bg-background" id="on-track">
+      <div className="grid grid-cols-1 md:grid-cols-2">
         {cards.map((card, i) => (
           <TrackCard key={card.id} card={card} index={i} />
         ))}

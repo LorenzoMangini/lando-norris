@@ -99,6 +99,8 @@ All colors MUST be HSL. Fonts use Google Fonts @import above.
     display: none;
   }
 
+  .font-400 { font-weight: 400; }
+  .font-600 { font-weight: 600; }
   .font-700 { font-weight: 700; }
   .font-800 { font-weight: 800; }
   .font-900 { font-weight: 900; }

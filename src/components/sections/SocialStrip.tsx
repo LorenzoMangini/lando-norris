@@ -97,19 +97,23 @@ export default function SocialStrip() {
             initial={{ y: '110%' }}
             animate={inView ? { y: '0%' } : {}}
             transition={{ delay: 0.08, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="font-heading font-800 text-5xl md:text-7xl tracking-tight text-foreground leading-none uppercase flex items-center gap-5"
+            className="font-heading font-800 text-5xl md:text-7xl tracking-tight text-foreground leading-none uppercase flex flex-wrap items-center gap-x-5 gap-y-1"
           >
-            On Socials
-            <motion.a
-              href="https://www.instagram.com/landonorris"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ rotate: 15, scale: 1.15 }}
-              transition={{ duration: 0.25 }}
-              className="text-muted-foreground hover:text-primary transition-colors duration-200"
-            >
-              <Instagram size={34} strokeWidth={1.5} />
-            </motion.a>
+            <span>what's up</span>
+            <span className="text-muted-foreground/40 font-400 hidden md:inline">✦</span>
+            <span className="flex items-center gap-3">
+              On Socials
+              <motion.a
+                href="https://www.instagram.com/landonorris"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ rotate: 15, scale: 1.15 }}
+                transition={{ duration: 0.25 }}
+                className="text-muted-foreground hover:text-primary transition-colors duration-200"
+              >
+                <Instagram size={32} strokeWidth={1.5} />
+              </motion.a>
+            </span>
           </motion.h2>
         </div>
       </div>

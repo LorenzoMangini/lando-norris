@@ -10,12 +10,14 @@ const photos = [
   { src: 'https://cdn.prod.website-files.com/67b5a02dc5d338960b17a7e9/68302baa14a96f3cdd2f9a95_ln-home-horiz-6.webp', alt: 'Lando with dog' },
   { src: 'https://cdn.prod.website-files.com/67b5a02dc5d338960b17a7e9/68302bab3ee6e26b1f434a7d_ln-home-horiz-7.webp', alt: 'Lando in tux' },
   { src: 'https://cdn.prod.website-files.com/67b5a02dc5d338960b17a7e9/68302baaedf821dd2e3a7c74_ln-home-horiz-8.webp', alt: 'Lando on plane' },
+  { src: 'https://cdn.prod.website-files.com/67b5a02dc5d338960b17a7e9/68302babb87c5f19ec131093_ln-home-horiz-9.webp', alt: 'Lando lifting trophy 2' },
+  { src: 'https://cdn.prod.website-files.com/67b5a02dc5d338960b17a7e9/68302bab4f762cdbc5e93415_ln-home-horiz-10.webp', alt: 'Lando celebrating' },
 ]
 
 const headlineWords = ['World', "Drivers'", 'Champion']
 
 function MarqueeStrip() {
-  const items = ['World Drivers Champion', '4× Race Winner 2025', 'McLaren F1', 'Number 4', 'Abu Dhabi 2024']
+  const items = ['World Drivers\' Champion', 'McLaren Formula 1', '2024 Season', 'Number 4', 'Abu Dhabi Grand Prix', '6 Race Wins', '19 Podiums', 'Since 2019']
   return (
     <div className="relative overflow-hidden py-3 border-y border-border">
       <motion.div
@@ -49,7 +51,7 @@ export default function WorldChampion() {
     target: stripRef,
     offset: ['start end', 'end start'],
   })
-  const stripX = useTransform(stripProgress, [0, 1], ['4%', '-12%'])
+  const stripX = useTransform(stripProgress, [0, 1], ['2%', '-18%'])
 
   // Section bg fade
   const { scrollYProgress } = useScroll({
@@ -59,7 +61,38 @@ export default function WorldChampion() {
   const bgOpacity = useTransform(scrollYProgress, [0, 0.15], [0, 1])
 
   return (
-    <section ref={sectionRef} className="bg-background overflow-hidden">
+    <section ref={sectionRef} id="champion" className="bg-background overflow-hidden">
+
+      {/* Full-width race celebration photo */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, margin: '-100px' }}
+        transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
+        className="relative w-full overflow-hidden"
+        style={{ height: '55vh' }}
+      >
+        <motion.img
+          src="https://cdn.prod.website-files.com/67b5a02dc5d338960b17a7e9/68302babcf12f0111d96322e_ln-home-horiz-3.webp"
+          alt="Lando Norris lifting trophy"
+          className="w-full h-full object-cover object-center"
+          style={{ scale: 1.05 }}
+          whileInView={{ scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-transparent to-background/80 pointer-events-none" />
+        {/* Crossed flags icon overlay */}
+        <div className="absolute bottom-6 right-8">
+          <img
+            src="https://cdn.prod.website-files.com/67b5a02dc5d338960b17a7e9/680cbcfdbc4bdc0ef619369f_ln-icon-crossed-flags2.svg"
+            alt=""
+            className="w-16 h-auto opacity-40"
+            style={{ filter: 'brightness(0) saturate(100%) invert(85%) sepia(60%) saturate(400%) hue-rotate(30deg)' }}
+          />
+        </div>
+      </motion.div>
+
       <motion.div style={{ opacity: bgOpacity }}>
         <MarqueeStrip />
       </motion.div>
