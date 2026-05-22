@@ -6,10 +6,12 @@ import HelmetGallery from '@/components/sections/HelmetGallery'
 import WorldChampion from '@/components/sections/WorldChampion'
 import SocialStrip from '@/components/sections/SocialStrip'
 import Partnerships from '@/components/sections/Partnerships'
+import CustomCursor from '@/components/ui/CustomCursor'
 
 export default function Index() {
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden cursor-none">
+      <CustomCursor />
       <Header />
       <main>
         <Hero />
