@@ -1,6 +1,7 @@
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import Hero from '@/components/sections/Hero'
+import MessageFromLando from '@/components/sections/MessageFromLando'
 import TrackCards from '@/components/sections/TrackCards'
 import HelmetGallery from '@/components/sections/HelmetGallery'
 import WorldChampion from '@/components/sections/WorldChampion'
@@ -15,11 +16,12 @@ export default function Index() {
       <Header />
       <main>
         <Hero />
+        <MessageFromLando />
         <TrackCards />
         <HelmetGallery />
         <WorldChampion />
-        <SocialStrip />
         <Partnerships />
+        <SocialStrip />
       </main>
       <Footer />
     </div>

@@ -19,11 +19,30 @@ const menuImages = [
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
+  const [hidden, setHidden] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [hoveredLink, setHoveredLink] = useState<number | null>(null)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60)
+    let lastY = window.scrollY
+
+    const onScroll = () => {
+      const currentY = window.scrollY
+      const delta = currentY - lastY
+
+      setScrolled(currentY > 60)
+
+      if (currentY < 80) {
+        setHidden(false)
+      } else if (delta > 8) {
+        setHidden(true)
+      } else if (delta < -8) {
+        setHidden(false)
+      }
+
+      lastY = currentY
+    }
+
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
@@ -35,29 +54,27 @@ export default function Header() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? 'bg-background/95 backdrop-blur-md border-b border-border'
+            ? 'bg-[#fafaf6]/92 backdrop-blur-md border-b border-[#d7d8cd]'
             : 'bg-transparent'
         }`}
+        style={{ transform: hidden && !menuOpen ? 'translateY(-115%)' : 'translateY(0)' }}
       >
-        <div className="flex items-center justify-between px-6 md:px-10 h-16">
+        <div className="flex h-[8.35rem] items-start justify-between px-6 py-7">
 
           {/* Logo */}
-          <a href="/" className="flex-shrink-0 leading-none">
-            <div
-              className="font-heading font-900 leading-none tracking-tight transition-colors duration-300"
-              style={{
-                fontSize: '1.05rem',
-                lineHeight: 1.05,
-                color: scrolled ? 'hsl(60,15%,90%)' : 'hsl(40,8%,18%)',
-              }}
-            >
-              <div>LANDO</div>
-              <div>NORRIS</div>
-            </div>
+          <a href="/" className="flex-shrink-0 leading-none" aria-label="Go to home">
+            <span className="block text-[#282c20]">
+              <span className="block font-serif text-[3rem] font-normal uppercase leading-[0.78] tracking-[-0.08em]">
+                Lando
+              </span>
+              <span className="block font-heading text-[2.65rem] font-black uppercase leading-[0.78] tracking-[-0.08em]">
+                Norris
+              </span>
+            </span>
           </a>
 
           {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden items-center gap-8">
             {navLinks.map((link) => (
               <a
                 key={link.href}
@@ -73,25 +90,25 @@ export default function Header() {
           </nav>
 
           {/* Right: STORE + hamburger */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-start gap-3">
             <a
               href="https://store.landonorris.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-5 py-2.5 text-sm font-heading font-800 tracking-widest uppercase transition-opacity duration-200 hover:opacity-85"
-              style={{ background: 'hsl(73 100% 50%)', color: 'hsl(40 8% 12%)', borderRadius: '8px' }}
+              className="flex h-[4.875rem] items-center gap-3 rounded-[0.65rem] px-7 text-[1.45rem] font-heading font-900 tracking-[-0.03em] uppercase transition-opacity duration-200 hover:opacity-85"
+              style={{ background: 'hsl(73 100% 50%)', color: 'hsl(40 8% 12%)' }}
             >
-              <ShoppingBag size={14} strokeWidth={2.5} />
+              <ShoppingBag size={24} strokeWidth={2.35} />
               Store
             </a>
 
             <button
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label="Toggle menu"
-              className="flex items-center justify-center w-10 h-10 transition-colors duration-200"
+              className="flex h-[4.875rem] w-[4.875rem] items-center justify-center rounded-[0.9rem] bg-[#fafaf6]/70 transition-colors duration-200"
               style={{
-                border: `1px solid ${scrolled ? 'hsl(78,12%,22%)' : 'hsl(40,8%,72%)'}`,
-                color: scrolled ? 'hsl(60,15%,90%)' : 'hsl(40,8%,18%)',
+                border: '3px solid #282c20',
+                color: '#282c20',
               }}
             >
               <motion.span
@@ -100,9 +117,9 @@ export default function Header() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.7 }}
                 transition={{ duration: 0.15 }}
-                className="font-heading font-700 text-lg leading-none select-none"
+                className="font-heading text-[2rem] font-900 uppercase leading-none select-none"
               >
-                {menuOpen ? '×' : '—'}
+                {menuOpen ? '×' : '−'}
               </motion.span>
             </button>
           </div>

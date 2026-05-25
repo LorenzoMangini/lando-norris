@@ -8,34 +8,30 @@ export default function CustomCursor() {
   const cursorX = useMotionValue(-200)
   const cursorY = useMotionValue(-200)
 
-  const dotX = useSpring(cursorX, { stiffness: 800, damping: 60 })
-  const dotY = useSpring(cursorY, { stiffness: 800, damping: 60 })
-  const ringX = useSpring(cursorX, { stiffness: 120, damping: 22 })
-  const ringY = useSpring(cursorY, { stiffness: 120, damping: 22 })
+  const dotX = useSpring(cursorX, { stiffness: 900, damping: 55 })
+  const dotY = useSpring(cursorY, { stiffness: 900, damping: 55 })
+  const ringX = useSpring(cursorX, { stiffness: 150, damping: 24 })
+  const ringY = useSpring(cursorY, { stiffness: 150, damping: 24 })
 
   useEffect(() => {
-    const onMove = (e: MouseEvent) => {
-      cursorX.set(e.clientX)
-      cursorY.set(e.clientY)
+    const onMove = (event: PointerEvent) => {
+      cursorX.set(event.clientX)
+      cursorY.set(event.clientY)
       if (!visible) setVisible(true)
+
+      const target = event.target instanceof Element ? event.target : null
+      setHovered(Boolean(target?.closest('a, button, input, textarea, select, [data-cursor-hover]')))
     }
-    const onEnter = () => setHovered(true)
-    const onLeave = () => setHovered(false)
+    const onLeaveWindow = () => setVisible(false)
+    const onEnterWindow = () => setVisible(true)
 
-    window.addEventListener('mousemove', onMove)
-
-    const interactables = document.querySelectorAll('a, button, [data-cursor-hover]')
-    interactables.forEach((el) => {
-      el.addEventListener('mouseenter', onEnter)
-      el.addEventListener('mouseleave', onLeave)
-    })
-
+    window.addEventListener('pointermove', onMove, { passive: true })
+    window.addEventListener('pointerleave', onLeaveWindow)
+    window.addEventListener('pointerenter', onEnterWindow)
     return () => {
-      window.removeEventListener('mousemove', onMove)
-      interactables.forEach((el) => {
-        el.removeEventListener('mouseenter', onEnter)
-        el.removeEventListener('mouseleave', onLeave)
-      })
+      window.removeEventListener('pointermove', onMove)
+      window.removeEventListener('pointerleave', onLeaveWindow)
+      window.removeEventListener('pointerenter', onEnterWindow)
     }
   }, [visible, cursorX, cursorY])
 
@@ -55,25 +51,30 @@ export default function CustomCursor() {
         animate={{ opacity: visible ? 1 : 0 }}
       >
         <motion.div
-          className="bg-primary rounded-full"
-          animate={{ width: hovered ? 6 : 4, height: hovered ? 6 : 4 }}
+          className="rounded-full"
+          style={{
+            background: '#d2ff00',
+            boxShadow: '0 0 0 1px rgba(40,44,32,0.45), 0 0 18px rgba(210,255,0,0.8)',
+          }}
+          animate={{ width: hovered ? 10 : 6, height: hovered ? 10 : 6 }}
           transition={{ duration: 0.15 }}
         />
       </motion.div>
 
       {/* Ring */}
       <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-[9998] rounded-full border border-primary/60"
+        className="fixed top-0 left-0 pointer-events-none z-[9998] rounded-full border-2 border-white"
         style={{
           x: ringX,
           y: ringY,
           translateX: '-50%',
           translateY: '-50%',
+          mixBlendMode: 'difference',
         }}
         animate={{
           opacity: visible ? 1 : 0,
-          width: hovered ? 44 : 28,
-          height: hovered ? 44 : 28,
+          width: hovered ? 54 : 34,
+          height: hovered ? 54 : 34,
         }}
         transition={{ duration: 0.2 }}
       />

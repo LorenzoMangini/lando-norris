@@ -80,14 +80,14 @@ export default function SocialStrip() {
   const inView = useInView(ref, { once: true, margin: '-60px' })
 
   return (
-    <section className="bg-muted py-20 overflow-hidden" id="off-track">
+    <section className="bg-[#f4f4ed] py-20 overflow-hidden text-[#282c20]" id="socials">
       <div ref={ref} className="px-6 md:px-12 mb-10">
         <div className="overflow-hidden mb-2">
           <motion.p
             initial={{ y: '100%' }}
             animate={inView ? { y: '0%' } : {}}
             transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-            className="text-muted-foreground font-heading text-xs tracking-[0.3em] uppercase"
+            className="text-[#535450] font-heading text-xs tracking-[0.3em] uppercase"
           >
             What's up
           </motion.p>
@@ -97,10 +97,10 @@ export default function SocialStrip() {
             initial={{ y: '110%' }}
             animate={inView ? { y: '0%' } : {}}
             transition={{ delay: 0.08, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="font-heading font-800 text-5xl md:text-7xl tracking-tight text-foreground leading-none uppercase flex flex-wrap items-center gap-x-5 gap-y-1"
+            className="font-heading font-800 text-5xl md:text-7xl tracking-tight text-[#282c20] leading-none uppercase flex flex-wrap items-center gap-x-5 gap-y-1"
           >
             <span>what's up</span>
-            <span className="text-muted-foreground/40 font-400 hidden md:inline">✦</span>
+            <span className="text-[#b4b8a5] font-400 hidden md:inline">*</span>
             <span className="flex items-center gap-3">
               On Socials
               <motion.a
@@ -109,7 +109,7 @@ export default function SocialStrip() {
                 rel="noopener noreferrer"
                 whileHover={{ rotate: 15, scale: 1.15 }}
                 transition={{ duration: 0.25 }}
-                className="text-muted-foreground hover:text-primary transition-colors duration-200"
+                className="text-[#535450] hover:text-[#b2c73a] transition-colors duration-200"
               >
                 <Instagram size={32} strokeWidth={1.5} />
               </motion.a>

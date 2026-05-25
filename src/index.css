@@ -84,6 +84,14 @@ All colors MUST be HSL. Fonts use Google Fonts @import above.
     -moz-osx-font-smoothing: grayscale;
   }
 
+  @media (pointer: fine) {
+    html,
+    body,
+    body * {
+      cursor: none !important;
+    }
+  }
+
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
     font-variation-settings: 'wdth' 125;
