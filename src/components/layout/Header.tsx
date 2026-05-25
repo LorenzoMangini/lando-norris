@@ -43,8 +43,13 @@ export default function Header() {
 
           {/* Logo */}
           <a href="/" className="flex-shrink-0 leading-none">
-            <div className="font-heading font-900 leading-none tracking-tight transition-colors duration-300 text-foreground"
-              style={{ fontSize: '1.05rem', lineHeight: 1.05 }}
+            <div
+              className="font-heading font-900 leading-none tracking-tight transition-colors duration-300"
+              style={{
+                fontSize: '1.05rem',
+                lineHeight: 1.05,
+                color: scrolled ? 'hsl(60,15%,90%)' : 'hsl(40,8%,18%)',
+              }}
             >
               <div>LANDO</div>
               <div>NORRIS</div>
@@ -57,7 +62,10 @@ export default function Header() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-muted-foreground text-sm font-heading font-600 tracking-widest uppercase transition-colors duration-200 hover:text-foreground"
+                className="text-sm font-heading font-600 tracking-widest uppercase transition-colors duration-200"
+                style={{ color: scrolled ? 'hsl(78,10%,55%)' : 'hsl(40,8%,42%)' }}
+                onMouseEnter={e => (e.currentTarget.style.color = scrolled ? 'hsl(60,15%,90%)' : 'hsl(40,8%,14%)')}
+                onMouseLeave={e => (e.currentTarget.style.color = scrolled ? 'hsl(78,10%,55%)' : 'hsl(40,8%,42%)')}
               >
                 {link.label}
               </a>
@@ -71,7 +79,7 @@ export default function Header() {
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-5 py-2.5 text-sm font-heading font-800 tracking-widest uppercase transition-opacity duration-200 hover:opacity-85"
-              style={{ background: 'hsl(73 100% 50%)', color: 'hsl(78 18% 10%)', borderRadius: '8px' }}
+              style={{ background: 'hsl(73 100% 50%)', color: 'hsl(40 8% 12%)', borderRadius: '8px' }}
             >
               <ShoppingBag size={14} strokeWidth={2.5} />
               Store
@@ -80,7 +88,11 @@ export default function Header() {
             <button
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label="Toggle menu"
-              className="flex items-center justify-center w-10 h-10 border border-border text-foreground transition-colors duration-200 hover:border-primary"
+              className="flex items-center justify-center w-10 h-10 transition-colors duration-200"
+              style={{
+                border: `1px solid ${scrolled ? 'hsl(78,12%,22%)' : 'hsl(40,8%,72%)'}`,
+                color: scrolled ? 'hsl(60,15%,90%)' : 'hsl(40,8%,18%)',
+              }}
             >
               <motion.span
                 key={menuOpen ? 'close' : 'open'}
