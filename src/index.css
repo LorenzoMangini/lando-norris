@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap');
+@import '@fontsource-variable/mona-sans';
 
 @tailwind base;
 @tailwind components;
@@ -10,8 +10,8 @@ All colors MUST be HSL. Fonts use Google Fonts @import above.
 
 @layer base {
   :root {
-    --font-heading: 'Barlow Condensed', ui-sans-serif, system-ui, sans-serif;
-    --font-body: 'Barlow', ui-sans-serif, system-ui, sans-serif;
+    --font-heading: 'Mona Sans', ui-sans-serif, system-ui, sans-serif;
+    --font-body: 'Mona Sans', ui-sans-serif, system-ui, sans-serif;
 
     /* LN dark olive brand palette */
     --background: 78 18% 14%;
@@ -86,11 +86,16 @@ All colors MUST be HSL. Fonts use Google Fonts @import above.
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
+    font-variation-settings: 'wdth' 125;
     letter-spacing: -0.02em;
   }
 }
 
 @layer utilities {
+  .font-heading {
+    font-variation-settings: 'wdth' 112.5;
+  }
+
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;

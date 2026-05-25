@@ -30,7 +30,7 @@ export default function Partnerships() {
   }
 
   return (
-    <section className="bg-background py-20 overflow-hidden">
+    <section id="partnerships" className="bg-background py-20 overflow-hidden">
       {/* Message from Lando */}
       <div ref={ref} className="px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-24">
         <div>

@@ -2,11 +2,12 @@ import { motion } from 'framer-motion'
 import { Instagram, Youtube, Twitter } from 'lucide-react'
 
 const navLinks = [
-  { label: 'On Track', href: '#on-track' },
-  { label: 'Off Track', href: '#off-track' },
-  { label: 'Helmets', href: '#helmets' },
-  { label: 'Calendar', href: '#next-race' },
-  { label: 'Store', href: 'https://store.landonorris.com' },
+  { label: 'On Track',     href: '#on-track' },
+  { label: 'Off Track',    href: '#off-track' },
+  { label: 'Helmets',      href: '#helmets' },
+  { label: 'Partnerships', href: '#partnerships' },
+  { label: 'Calendar',     href: 'https://landonorris.com/calendar' },
+  { label: 'Store',        href: 'https://store.landonorris.com' },
 ]
 
 const legalLinks = [

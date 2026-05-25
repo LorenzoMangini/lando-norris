@@ -3,10 +3,10 @@ import { ShoppingBag } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const navLinks = [
-  { label: 'On Track',     href: '#on-track' },
-  { label: 'Off Track',    href: '#off-track' },
-  { label: 'Helmets',      href: '#helmets' },
-  { label: 'Champions',    href: '#champion' },
+  { label: 'On Track',      href: '#on-track' },
+  { label: 'Off Track',     href: '#off-track' },
+  { label: 'Partnerships',  href: '#partnerships' },
+  { label: 'Calendar',      href: 'https://landonorris.com/calendar' },
 ]
 
 const menuImages = [
@@ -70,10 +70,10 @@ export default function Header() {
               href="https://store.landonorris.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 text-sm font-heading font-800 tracking-widest uppercase transition-opacity duration-200 hover:opacity-85"
-              style={{ background: 'hsl(73 100% 50%)', color: 'hsl(78 18% 10%)' }}
+              className="flex items-center gap-2 px-5 py-2.5 text-sm font-heading font-800 tracking-widest uppercase transition-opacity duration-200 hover:opacity-85"
+              style={{ background: 'hsl(73 100% 50%)', color: 'hsl(78 18% 10%)', borderRadius: '8px' }}
             >
-              <ShoppingBag size={13} strokeWidth={2.5} />
+              <ShoppingBag size={14} strokeWidth={2.5} />
               Store
             </a>
 
@@ -150,7 +150,7 @@ export default function Header() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5, duration: 0.5 }}
                 className="mt-8 inline-flex items-center gap-3 self-start px-6 py-3 font-heading font-800 text-sm tracking-widest uppercase"
-                style={{ background: 'hsl(73 100% 50%)', color: 'hsl(78 18% 10%)' }}
+                style={{ background: 'hsl(73 100% 50%)', color: 'hsl(78 18% 10%)', borderRadius: '8px' }}
               >
                 <ShoppingBag size={14} strokeWidth={2.5} />
                 Visit Store

@@ -2,42 +2,109 @@ import { useRef } from 'react'
 import { motion, useInView, useDragControls } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
 
+// Base CDN path for helmet images
+const S = 'https://cdn.prod.website-files.com/67d97a68478fe87e30c67abe/'
+
 const helmets = [
+  // 2025
   {
     name: 'Season',
     year: '2025',
-    base: 'https://cdn.prod.website-files.com/67d97a68478fe87e30c67abe/68305b3e6c7ab86033cf172c_In-helm-2025-Season-base.webp',
-    hover: 'https://cdn.prod.website-files.com/67d97a68478fe87e30c67abe/68305b411c575b2f777125f6_In-helm-2025-Season-hover.webp',
+    base: `${S}68305b3e6c7ab86033cf172c_In-helm-2025-Season-base.webp`,
+    hover: `${S}68305b411c575b2f777125f6_In-helm-2025-Season-hover.webp`,
   },
   {
     name: 'Discoball',
     year: '2025',
-    base: 'https://cdn.prod.website-files.com/67d97a68478fe87e30c67abe/68305b2259159e5170d2b923_In-helm-2025-Discoball-base.webp',
-    hover: 'https://cdn.prod.website-files.com/67d97a68478fe87e30c67abe/68305b24037a1e7681195c20_In-helm-2025-Discoball-hover.webp',
+    base: `${S}68305b2259159e5170d2b923_In-helm-2025-Discoball-base.webp`,
+    hover: `${S}68305b24037a1e7681195c20_In-helm-2025-Discoball-hover.webp`,
   },
   {
     name: 'Dark Glitter',
     year: '2025',
-    base: 'https://cdn.prod.website-files.com/67d97a68478fe87e30c67abe/68305aff4692de3e7ea12251_In-helm-2025-DarkGlitter-base.webp',
-    hover: 'https://cdn.prod.website-files.com/67d97a68478fe87e30c67abe/68305aff4692de3e7ea12251_In-helm-2025-DarkGlitter-base.webp',
+    base: `${S}68305aff4692de3e7ea12251_In-helm-2025-DarkGlitter-base.webp`,
+    hover: `${S}68305aff4692de3e7ea12251_In-helm-2025-DarkGlitter-base.webp`,
+  },
+  // 2024
+  {
+    name: 'Season',
+    year: '2024',
+    base: `${S}68305b3e6c7ab86033cf172c_In-helm-2025-Season-base.webp`,
+    hover: `${S}68305b411c575b2f777125f6_In-helm-2025-Season-hover.webp`,
   },
   {
     name: 'Porcelain',
     year: '2024',
-    base: 'https://cdn.prod.website-files.com/67d97a68478fe87e30c67abe/68305b3e6c7ab86033cf172c_In-helm-2025-Season-base.webp',
-    hover: 'https://cdn.prod.website-files.com/67d97a68478fe87e30c67abe/68305b411c575b2f777125f6_In-helm-2025-Season-hover.webp',
+    base: `${S}68305b2259159e5170d2b923_In-helm-2025-Discoball-base.webp`,
+    hover: `${S}68305b24037a1e7681195c20_In-helm-2025-Discoball-hover.webp`,
+  },
+  {
+    name: 'Japan',
+    year: '2024',
+    base: `${S}68305aff4692de3e7ea12251_In-helm-2025-DarkGlitter-base.webp`,
+    hover: `${S}68305b411c575b2f777125f6_In-helm-2025-Season-hover.webp`,
+  },
+  {
+    name: 'GIF',
+    year: '2024',
+    base: `${S}68305b3e6c7ab86033cf172c_In-helm-2025-Season-base.webp`,
+    hover: `${S}68305b24037a1e7681195c20_In-helm-2025-Discoball-hover.webp`,
   },
   {
     name: 'Dark Mode',
     year: '2024',
-    base: 'https://cdn.prod.website-files.com/67d97a68478fe87e30c67abe/68305b2259159e5170d2b923_In-helm-2025-Discoball-base.webp',
-    hover: 'https://cdn.prod.website-files.com/67d97a68478fe87e30c67abe/68305b24037a1e7681195c20_In-helm-2025-Discoball-hover.webp',
+    base: `${S}68305b2259159e5170d2b923_In-helm-2025-Discoball-base.webp`,
+    hover: `${S}68305b411c575b2f777125f6_In-helm-2025-Season-hover.webp`,
+  },
+  // 2023
+  {
+    name: 'Race',
+    year: '2023',
+    base: `${S}68305aff4692de3e7ea12251_In-helm-2025-DarkGlitter-base.webp`,
+    hover: `${S}68305b24037a1e7681195c20_In-helm-2025-Discoball-hover.webp`,
   },
   {
     name: 'Las Vegas',
     year: '2023',
-    base: 'https://cdn.prod.website-files.com/67d97a68478fe87e30c67abe/68305aff4692de3e7ea12251_In-helm-2025-DarkGlitter-base.webp',
-    hover: 'https://cdn.prod.website-files.com/67d97a68478fe87e30c67abe/68305b411c575b2f777125f6_In-helm-2025-Season-hover.webp',
+    base: `${S}68305b3e6c7ab86033cf172c_In-helm-2025-Season-base.webp`,
+    hover: `${S}68305b411c575b2f777125f6_In-helm-2025-Season-hover.webp`,
+  },
+  {
+    name: 'Chrome',
+    year: '2023',
+    base: `${S}68305b2259159e5170d2b923_In-helm-2025-Discoball-base.webp`,
+    hover: `${S}68305b24037a1e7681195c20_In-helm-2025-Discoball-hover.webp`,
+  },
+  {
+    name: 'Beachball',
+    year: '2023',
+    base: `${S}68305aff4692de3e7ea12251_In-helm-2025-DarkGlitter-base.webp`,
+    hover: `${S}68305b411c575b2f777125f6_In-helm-2025-Season-hover.webp`,
+  },
+  // 2022+
+  {
+    name: 'Basketball',
+    year: '2022',
+    base: `${S}68305b3e6c7ab86033cf172c_In-helm-2025-Season-base.webp`,
+    hover: `${S}68305b24037a1e7681195c20_In-helm-2025-Discoball-hover.webp`,
+  },
+  {
+    name: 'Season',
+    year: '2021',
+    base: `${S}68305b2259159e5170d2b923_In-helm-2025-Discoball-base.webp`,
+    hover: `${S}68305b411c575b2f777125f6_In-helm-2025-Season-hover.webp`,
+  },
+  {
+    name: 'Silverstone',
+    year: '2020',
+    base: `${S}68305aff4692de3e7ea12251_In-helm-2025-DarkGlitter-base.webp`,
+    hover: `${S}68305b24037a1e7681195c20_In-helm-2025-Discoball-hover.webp`,
+  },
+  {
+    name: 'Season',
+    year: '2019',
+    base: `${S}68305b3e6c7ab86033cf172c_In-helm-2025-Season-base.webp`,
+    hover: `${S}68305b411c575b2f777125f6_In-helm-2025-Season-hover.webp`,
   },
 ]
 
@@ -184,7 +251,7 @@ export default function HelmetGallery() {
               href="https://landonorris.com/on-track"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 border border-border px-5 py-4 text-foreground font-heading font-700 text-xs tracking-widest uppercase hover:border-primary hover:text-primary transition-all duration-300"
+              className="group inline-flex items-center gap-2 border border-border px-5 py-4 text-foreground font-heading font-700 text-xs tracking-[0.2em] uppercase hover:border-primary hover:text-primary transition-all duration-300"
             >
               <span className="group-hover:mr-1 transition-all duration-300">See all helmets</span>
               <ArrowUpRight size={12} className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />

@@ -5,21 +5,21 @@ import { ArrowUpRight } from 'lucide-react'
 const cards = [
   {
     id: 'on-track',
-    tag: 'Track',
-    title: 'ON TRACK',
+    tag: 'On Track',
+    title: 'TRACK',
     description: 'Most recent results, career stats and photos from trackside.',
-    href: '#on-track',
+    href: 'https://landonorris.com/on-track',
     image: 'https://cdn.prod.website-files.com/67b5a02dc5d338960b17a7e9/68302ff5ff89a9a4afb8c19e_ln-home-helm-large.webp',
-    cta: 'View On Track',
+    cta: 'View on track',
   },
   {
     id: 'off-track',
     tag: 'Off Track',
-    title: 'OFF TRACK',
+    title: 'TRACK',
     description: 'Campaigns, shoots and other such promotional materials for fans.',
-    href: '#off-track',
+    href: 'https://landonorris.com/off-track',
     image: 'https://cdn.prod.website-files.com/67b5a02dc5d338960b17a7e9/67d18655b032045a4dc78e53_ln4-hp-lando-helmet.webp',
-    cta: 'View Off Track',
+    cta: 'View off track',
   },
 ]
 

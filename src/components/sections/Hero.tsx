@@ -38,7 +38,7 @@ function NextRaceCard() {
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
           <div style={{ width: 20, height: 1, background: 'hsl(73,100%,50%)' }} />
-          <p style={{ fontFamily: 'var(--font-heading)', fontSize: 8, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'hsl(73,100%,50%)', margin: 0 }}>
+          <p style={{ fontFamily: 'var(--font-heading)', fontVariationSettings: "'wdth' 100", fontSize: 8, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'hsl(73,100%,50%)', margin: 0 }}>
             Next Race
           </p>
         </div>
@@ -59,7 +59,34 @@ function NextRaceCard() {
             GP
           </p>
         </div>
-        <div style={{ borderTop: '1px solid hsl(78,14%,22%)', paddingTop: 12 }}>
+        <div style={{ borderTop: '1px solid hsl(78,14%,22%)', paddingTop: 10 }}>
+          {/* Helmet with laurel wreath icon */}
+          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 8 }}>
+            <svg viewBox="0 0 80 44" style={{ width: 72, height: 40, opacity: 0.35 }} fill="none"
+              stroke="hsl(60,15%,72%)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              {/* Left laurel */}
+              <path d="M8 32 C4 28, 3 23, 5 19" />
+              <path d="M8 32 C5 27, 6 21, 9 18" />
+              <path d="M5 19 C3 15, 5 12, 8 11" />
+              <path d="M9 18 C7 14, 9 11, 12 11" />
+              <path d="M8 11 C7 8, 9 6, 12 7" />
+              <path d="M12 11 C11 8, 13 6, 16 7" />
+              <path d="M5 19 C8 24, 8 28, 8 32" />
+              {/* Right laurel */}
+              <path d="M72 32 C76 28, 77 23, 75 19" />
+              <path d="M72 32 C75 27, 74 21, 71 18" />
+              <path d="M75 19 C77 15, 75 12, 72 11" />
+              <path d="M71 18 C73 14, 71 11, 68 11" />
+              <path d="M72 11 C73 8, 71 6, 68 7" />
+              <path d="M68 11 C69 8, 67 6, 64 7" />
+              <path d="M75 19 C72 24, 72 28, 72 32" />
+              {/* Helmet */}
+              <path d="M28 34 L28 28 Q28 14 40 14 Q52 14 52 28 L52 34 Z" />
+              <path d="M25 34 L55 34" />
+              <path d="M28 34 Q28 37 32 37 L48 37 Q52 37 52 34" />
+              <path d="M32 28 Q33 22 40 22 Q47 22 48 28 L48 33 L32 33 Z" strokeWidth="1" opacity="0.5" />
+            </svg>
+          </div>
           <p style={{ fontFamily: 'var(--font-heading)', fontWeight: 700, fontSize: 8, letterSpacing: '0.18em', textTransform: 'uppercase', textAlign: 'center', color: 'hsl(78,12%,40%)', margin: 0 }}>
             McLaren F1
           </p>
